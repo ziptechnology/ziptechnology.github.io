@@ -1,0 +1,83 @@
+--- 
+import '../styles/normalize.css'
+
+interface Props {
+	title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="description" content="Astro description">
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title} - Zip Tech</title>
+
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet"> 
+	</head>
+	<body>
+		<div class="content">
+			<slot />
+		</div>
+	</body>
+</html>
+<style is:global>
+	:root {
+		--brand: #90f;
+	}
+	html {
+		font-family: system-ui, sans-serif;
+		background: #13151A;
+		color: #FFF;
+		background-size: 224px;
+	}
+	.content {
+		display: grid;
+		place-items: center;
+		height: 100%;
+		margin: 0 27vw;
+	}
+	@media (max-width: 320px) {
+        .content {
+            display: block;
+			margin: 25px;
+        }
+    }
+	@media (max-width: 768px) {
+        .content {
+			margin: 0 15vw;
+        }
+    }
+	h1, h2, h3, h4 {
+		font-family: 'Roboto Mono', monospace;
+		font-weight: 700;
+	}
+	mark {
+		-webkit-animation: 1.5s highlight 1.5s 1 normal forwards;
+        animation: 1.5s highlight 1.5s 1 normal forwards;
+  		background-color: none;
+  		background: linear-gradient(90deg, var(--brand) 50%, rgba(255, 255, 255, 0) 50%);
+  		background-size: 200% 100%;
+  		background-position: 100% 0;
+		color: #FFF
+	}
+
+	@-webkit-keyframes highlight {
+  		to {
+    		background-position: 0 0;
+  		}
+	}
+
+	@keyframes highlight {
+  		to {
+    		background-position: 0 0;
+  		}
+	}
+</style>
